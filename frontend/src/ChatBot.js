@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = process.env.REACT_APP_API_URL;
+console.log("API URL:", API_URL);
 
 function ChatBot() {
   const [messages, setMessages] = useState([
@@ -10,6 +11,7 @@ function ChatBot() {
   const [loading, setLoading] = useState(false);
   const chatEndRef = useRef(null);
   const [lastMsgIdx, setLastMsgIdx] = useState(0);
+  
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -130,10 +132,14 @@ function ChatBot() {
     setInput('');
     try {
       const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ user_prompt: userMsg.text })
-      });
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    user_prompt: userMsg.text
+  })
+});
       const data = await res.json();
       setMessages((msgs) => [
         ...msgs,
