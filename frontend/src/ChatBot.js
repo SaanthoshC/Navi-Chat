@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 
 const API_URL = process.env.REACT_APP_API_URL;
-console.log("API URL:", API_URL);
 
 function ChatBot() {
   const [messages, setMessages] = useState([
