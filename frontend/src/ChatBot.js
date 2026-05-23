@@ -188,7 +188,7 @@ function ChatBot() {
           userSelect: 'none',
         }}>
           <img
-            src={process.env.PUBLIC_URL + '/NavigateLabs-CIR.png'}
+            src="/NavigateLabs-CIR.png"
             alt="Navigate Labs CIR Logo"
             style={{
               width: 44,
